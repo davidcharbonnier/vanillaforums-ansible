@@ -1,0 +1,8 @@
+- name: "Install required system packages"
+  package:
+    name: "{{ vanillaforums_system_packages }}"
+    state: present
+  become: true
+  notify:
+  - "Start and enable nginx"
+  - "Start and enable haproxy"

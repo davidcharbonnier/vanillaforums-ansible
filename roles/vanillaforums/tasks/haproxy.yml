@@ -1,0 +1,9 @@
+- name: "Configure haproxy"
+  copy:
+    src: haproxy/haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
+  notify: "Reload haproxy"

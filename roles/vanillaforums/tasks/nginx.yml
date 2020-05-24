@@ -1,0 +1,17 @@
+- name: "Configure nginx logging"
+  replace:
+    path: /etc/nginx/nginx.conf
+    regexp: '^(\s*)(.*)_log(.*)$'
+    replace: '\1\2_log syslog:server=unix:/dev/log;'
+  become: true
+  notify: "Reload nginx"
+
+- name: "Configure nginx virtualhost"
+  copy:
+    src: nginx/nginx.conf
+    dest: /etc/nginx/sites-available/default
+    mode: "0644"
+    owner: root
+    group: root
+  become: true
+  notify: "Reload nginx"

@@ -1,0 +1,3 @@
+vanillaforums_system_packages:
+- haproxy
+- nginx

@@ -1,0 +1,15 @@
+- include: packages.yml
+  tags:
+  - packages
+
+- include: nginx.yml
+  tags:
+  - nginx
+
+- include: haproxy.yml
+  tags:
+  - haproxy
+
+- include: application.yml
+  tags:
+  - application

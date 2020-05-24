@@ -1,0 +1,20 @@
+- name: "Create application folder"
+  file:
+    path: /var/www/html
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: "0755"
+  become: true
+
+- name: "Write application files"
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: www-data
+    group: www-data
+    mode: "0755"
+  become: true
+  loop:
+  - { src: application/index.html, dest: /var/www/html/index.html }
+  - { src: application/main.css, dest: /var/www/html/main.css }
